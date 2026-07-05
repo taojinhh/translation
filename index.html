@@ -149,7 +149,7 @@
   .legend{display:flex; gap:10px; flex-wrap:wrap; font-size:12px; margin-top:8px;}
   .legend span{display:inline-flex; align-items:center; gap:5px;}
   .dot{width:14px; height:14px; border-radius:4px; display:inline-block;}
-  footer{text-align:center; color:#9aa7b5; font-size:12px; padding:20px;}
+  footer{text-align:center; color:#9aa7b5; font-size:12px; padding:20px; line-height:1.6;}
   @media(max-width:640px){
     .lane-label{flex-basis:64px; font-size:11px;}
     .tile{width:26px; height:30px; font-size:14px;}
@@ -157,7 +157,7 @@
   }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 <header>
   <h1>🧬 단백질 합성(번역) 시뮬레이션</h1>
   <p>DNA의 유전 정보가 mRNA를 거쳐 단백질(폴리펩타이드)로 만들어지는 과정을 직접 클릭하며 배워요</p>
@@ -168,7 +168,6 @@
 </header>
 
 <main>
-  <!-- ================= PROGRAM 1 ================= -->
   <section class="panel active" id="p1">
     <div class="card">
       <h2 class="section"><span class="num">1</span> 유전 정보의 해독 과정</h2>
@@ -222,7 +221,6 @@
     </div>
   </section>
 
-  <!-- ================= PROGRAM 2 ================= -->
   <section class="panel" id="p2">
     <div class="card">
       <h2 class="section"><span class="num">2</span> 내가 만드는 염기 서열 → 아미노산</h2>
@@ -264,7 +262,6 @@
   </section>
 </main>
 
-<!-- 코돈표 모달 -->
 <div class="modal-bg" id="modalBg">
   <div class="modal">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
@@ -277,7 +274,10 @@
   </div>
 </div>
 
-<footer>고등학교 생명과학 · 유전자 발현(전사와 번역) 학습용 시뮬레이션</footer>
+<footer>
+  고등학교 생명과학 · 유전자 발현(전사와 번역) 학습용 시뮬레이션<br>
+  All Rights Reserved (무단 전재 및 재배포 금지)
+</footer>
 
 <script>
 /* ===== 공통 데이터 ===== */
@@ -489,7 +489,7 @@ function renderP2(){
   } else if(ended){
     p2narr.innerHTML=`🛑 <b>종결 코돈</b>을 만나 단백질 합성이 끝났어요. 그 뒤의 염기는 번역되지 않아요. 염기 순서를 바꿔 다른 단백질도 만들어 보세요!`;
   } else if(poly.length>0){
-    p2narr.innerHTML=`👍 좋아요! 지금까지 <b>${poly.map(k=>AA[k][0]).join(' - ')}</b> 순서로 아미노산이 연결됐어요. 같은 염기라도 <b>순서를 바꾸면</b> 완전히 다른 단백질이 됩니다.`;
+    p2narr.innerHTML=`👍 좋아요! 지금까지 <b>${poly.map(k=>AA[k][0]).join(' - ')}</b> 순서로 아미노산이 연결됐어요. 같은 염기라도 <b>순서를 바꾸면</b> 완전히 다른 단백질 됩니다.`;
   } else {
     p2narr.innerHTML='💡 <b>팁:</b> mRNA는 보통 개시 코돈 <b>AUG</b>에서 시작해서, 종결 코돈 <b>UAA·UAG·UGA</b>를 만나면 단백질 합성이 끝나요.';
   }
